@@ -1,0 +1,291 @@
+@font-face {
+  font-family: codeman38;
+  src: url(/PressStart2P.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+}
+.car {
+  background-image: url(/img/redCar.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  border-radius: 10px;
+  bottom: 100px;
+  height: 20%;
+  position: absolute;
+  transition: transform 0.5s;
+  width: 50px;
+}
+
+.super {
+  background-image: url(/img/super.png);
+  background-repeat: no-repeat;
+  background-size: 120% auto;
+  height: 50%;
+  position: fixed;
+  width: 50px;
+}
+
+.car.is-drift {
+  transform: rotate(calc(var(--direction) * 30deg));
+}
+
+.car.is-crashed,
+.enemy.is-crashed {
+  background-color: transparent;
+  background-image: none;
+  position: relative;
+}
+
+.car.is-crashed::before,
+.enemy.is-crashed::before {
+  background-image: url(/img/3iCN.gif);
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  transition: transform 0.5s;
+  content: '';
+  height: 150%;
+  position: fixed;
+  width: 150px;
+}
+
+.progress {
+  bottom: 0.1em;
+  left: calc(50% - 27.5vh - 1em);
+  position: absolute;
+  top: 0.1em;
+  transform: translateX(-100%);
+  width: 50px;
+  border-right: #fff solid 3px;
+  border-left: #fff solid 3px;
+  background-color: #666763;
+}
+
+.progress::before,
+.progress::after {
+  border-radius: 10px;
+  content: "";
+  height: 50px;
+  left: 0;
+  position: absolute;
+  width: 50px;
+}
+
+.progress::before {
+  background-image: url(/img/bandera1.png);
+  background-repeat: no-repeat;
+  bottom: 0;
+}
+
+.progress::after {
+  background-image: url(/img/bandera2.png);
+  background-repeat: no-repeat;
+  margin-top: 5px;
+  top: 0;
+}
+
+.progress .car {
+  background-image: url(/img/cardmini.png);
+  transform: scale(.6);
+  bottom: var(--progress);
+  transition: bottom 150ms ease-in-out;
+  z-index: 1;
+}
+
+.carGame {
+  width: 100%;
+  height: 100%;
+  background: #006400;
+  display: flex;
+  justify-content: end;
+}
+
+.lines {
+  width: 10px;
+  height: 100px;
+  background: white;
+  position: absolute;
+  margin-left: 190px;
+  z-index: -2;
+}
+
+.gameArea {
+  z-index: 0;
+  height: 100vh;
+  width: 56vh;
+  min-width: 20vh;
+  background: #605F61;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-right: 7px dashed #c8d6e5;
+  border-left: 7px dashed #c8d6e5;
+}
+
+.enemy {
+  z-index: 2;
+  background-image: url(/img/car-1.png);
+  background-repeat: no-repeat;
+  background-size: 60px 80px;
+  border-radius: 10px;
+  bottom: 120px;
+  height: 100px;
+  position: absolute;
+  width: 50px;
+}
+
+.help {
+  z-index: 2;
+  background-image: url(/img/help.png);
+  background-repeat: no-repeat;
+  background-size: 50px 80px;
+  border-radius: 10px;
+  bottom: 120px;
+  height: 100px;
+  position: absolute;
+  width: 50px;
+}
+
+.oil {
+  background-image: url(img/oil-1.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  border-radius: 10px;
+  bottom: 50px;
+  height: 50px;
+  position: absolute;
+  width: 50px;
+  z-index: 1;
+}
+
+.meta {
+  background-image:url(/img/meta.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  position: absolute;
+  width: 700px;
+  z-index: -1;
+}
+
+.fuel {
+  text-align: center;
+  position: absolute;
+  margin-top: 60vh;
+  margin-right: 30vh;
+}
+
+.fuel_valor {
+  color: white;
+  font-size: 1.2em;
+  font-family: codeman38;
+  text-align: center;
+  position: absolute;
+  margin-top: 70vh;
+  margin-right: 27vh;
+}
+
+.speed {
+  color: white;
+  font-size: 1em;
+  font-family: codeman38;
+  text-align: center;
+  position: absolute;
+  margin-top: 40vh;
+  margin-right: 25vh;
+}
+
+.score {
+  color: white;
+  font-size: 1.2em;
+  font-family: codeman38;
+  text-align: center;
+  position: absolute;
+  margin-right: 30vh;
+  margin-top: 20vh;
+}
+
+.slide {
+  position: absolute;
+  background: #000;
+  widows: 300px;
+  height: 100vh;
+  width: 50vh;
+  font-size: 1.5em;
+  color: white;
+  font-family: codeman38;
+  box-shadow: 0 5px 5px #777;
+}
+.startScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #000;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  font-family: codeman38;
+  letter-spacing: 5;
+  font-size: 20px;
+  word-spacing: 3;
+  line-height: 30px;
+  text-transform: upper;
+}
+
+@media screen and (max-width: 770px) {
+  .gameArea {
+    width: 50vw;
+    margin-right: 220px;
+  }
+  .score {
+    margin-right: 19vw;
+    font-size: 1em;
+  }
+  .car {
+    background-size: 40px 100px;
+  }
+  .lines {
+    margin-left: 135px;
+  }
+  .enemy {
+    background-size: 35px 90px;
+    width: 35px;
+    height: 90px;
+  }
+
+  .startScreen img {
+    width: 80%;
+    height: 80%;
+  }
+
+  .fuel {
+    margin-right: 20vh;
+  }
+  .fuel img {
+    width: 70px;
+    height: 30px;
+  }
+
+  .fuel_valor {
+    font-size: 1.1em;
+    margin-right: 17vh;
+  }
+  .speed {
+    margin-right: 13vh;
+    font-size: 0.9em;
+  }
+}
