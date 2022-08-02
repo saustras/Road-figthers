@@ -122,9 +122,8 @@ function endGame(crashed = false) {
     startScreen.style.color = randomColor();
 
     startScreen.addEventListener("click", () => window.location.reload());
-
   }
-  else if (player.fuel<=0){
+  else if(!crashed) {
     game.state = "car-crashed";
     car.classList.add("is-crashed");
 
@@ -328,10 +327,11 @@ function speeds() {
 
 const vaciarFuel = () => {
   let totalfuel = setInterval(() => {
-    if (player.fuel > 0) {
+    if (player.fuel > 0 && player.start=== true) {
       player.fuel-= 2;
+
     }
-    if (player.fuel === 0) {
+    if (player.fuel <= 0) {
       endGame();
       clearInterval(totalfuel);
     }
